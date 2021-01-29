@@ -512,7 +512,7 @@ void AsyncTelegram::sendMessage(const TBMessage &msg, const char* message, Strin
         root["parse_mode"] = "Markdown";
     
     if (keyboard.length() != 0) {
-        DynamicJsonDocument doc(512);
+        DynamicJsonDocument doc(BUFFER_BIG);
         deserializeJson(doc, keyboard);
         JsonObject myKeyb = doc.as<JsonObject>();
         root["reply_markup"] = myKeyb;
